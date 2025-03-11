@@ -5,7 +5,13 @@ public class MultipleCoinFlips {
         int flips = 1;
 
         if (args.length == 1){
-            flips = Integer.parseInt(args[0]);
+            try {
+                flips = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e){
+                System.out.println("Specify" + "the number of flips to simulate");
+                return;
+            }
+
         }
         Random randomiser = new Random();
 
