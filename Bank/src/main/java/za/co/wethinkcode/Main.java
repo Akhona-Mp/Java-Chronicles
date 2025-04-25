@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static double balance = 0 ;
+
     public static void main(String[] args) {
-
-
 
         boolean isRunning = true;
         int choice;
+
         while (isRunning) {
 
             System.out.println("**************************");

@@ -13,10 +13,10 @@ public class MultipleCoinFlips {
             }
 
         }
-        Random randomiser = new Random();
+        Random randomNum = new Random();
 
-        for (int i = 0; 1 < flips; i++){
-            if (randomiser.nextInt(2) == 0){
+        for (int i = 0; i < flips; i++){
+            if (randomNum.nextInt(2) == 0){
                 System.out.println("HEADS!");
             } else {
                 System.out.println("TAILS!");
