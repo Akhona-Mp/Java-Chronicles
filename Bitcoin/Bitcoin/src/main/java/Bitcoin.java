@@ -11,7 +11,18 @@ public class Bitcoin {
             System.exit(1);
         }
 
-        double quantity;
+        double quantity = getQuantity(args[0]);
+        if (quantity == -1) return;
+
+        public static double getQuantity(String inpit){
+            try {
+                return Double.parseDouble(input); // Convert input string to double
+            } catch (NumberFormatException e) {
+                System.out.println("Command-line argument is not a valid number.");
+                return -1; // Return -1 if invalid input
+            }
+
+        }
         try{
             // Typ cast the value at args[0] from a string to double
             quantity = Double.parseDouble(args[0]);
