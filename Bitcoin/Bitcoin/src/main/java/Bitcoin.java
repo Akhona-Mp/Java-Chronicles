@@ -14,6 +14,9 @@ public class Bitcoin {
         double quantity = getQuantity(args[0]);
         if (quantity == -1) return;
 
+        double pricePerBitcoin = getBitcoinPrice();
+        if (pricePerBitcoin == -1) return;
+
         public static double getQuantity(String inpit){
             try {
                 return Double.parseDouble(input); // Convert input string to double
@@ -23,23 +26,20 @@ public class Bitcoin {
             }
 
         }
-        try{
-            // Typ cast the value at args[0] from a string to double
-            quantity = Double.parseDouble(args[0]);
-        }catch (NumberFormatException e){
-            System.out.println("Command-line argument is not a number.");
-            System.exit(1);
-            return;
-        }
 
-        try{
-            String apiUrl = "https://rest.coincap.io/v3/assets/bitcoin";
-            HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
-            connection.setRequestMethod("GET");
+        public static double getBitcoinPrice() {
+            try {
+                String apiUrl = "https://rest.coincap.io/v3/assets/bitcoin";
+                HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
+                connection.setRequestMethod("GET");
 
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream())
-            );
+                int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    System.out.println("Error: Received HTTP response code " + responseCode);
+                    return -1; // Exit if HTTP request failed
+                }
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String inputLine;
 
