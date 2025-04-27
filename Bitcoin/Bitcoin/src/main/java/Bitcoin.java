@@ -5,59 +5,73 @@ import java.net.URL;
 import org.json.JSONObject;
 
 public class Bitcoin {
-    public static void main(String[] args){
-        if (args.length != 1){
+    public static void main(String[] args) {
+        if (args.length != 1) {
             System.out.println("Missing command-line argument.");
             System.exit(1);
         }
 
         double quantity = getQuantity(args[0]);
-        if (quantity == -1) return;
+        if (quantity == -1) return; // Exit if invalid quantity
 
         double pricePerBitcoin = getBitcoinPrice();
-        if (pricePerBitcoin == -1) return;
+        if (pricePerBitcoin == -1) return; // Exit if unable to get price
 
-        public static double getQuantity(String inpit){
-            try {
-                return Double.parseDouble(input); // Convert input string to double
-            } catch (NumberFormatException e) {
-                System.out.println("Command-line argument is not a valid number.");
-                return -1; // Return -1 if invalid input
-            }
+        double totalValue = calculateTotalValue(pricePerBitcoin, quantity);
 
+        printResults(pricePerBitcoin, quantity, totalValue); // Output results
+    }
+
+    // Method to get the quantity from command-line argument
+    public static double getQuantity(String input) {
+        try {
+            // Convert input string to double
+            return Double.parseDouble(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Command-line argument is not a valid number.");
+            return -1;
         }
+    }
 
-        public static double getBitcoinPrice() {
-            try {
-                String apiUrl = "https://rest.coincap.io/v3/assets/bitcoin";
-                HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
-                connection.setRequestMethod("GET");
+    // Method to fetch the current price of Bitcoin from the API
+    public static double getBitcoinPrice() {
+        try {
+            String apiUrl = "https://rest.coincap.io/v3/assets/bitcoin";
+            HttpURLConnection connection = (HttpURLConnection) new URL(apiUrl).openConnection();
+            connection.setRequestMethod("GET");
 
-                int responseCode = connection.getResponseCode();
-                if (responseCode != HttpURLConnection.HTTP_OK) {
-                    System.out.println("Error: Received HTTP response code " + responseCode);
-                    return -1; // Exit if HTTP request failed
-                }
+            int responseCode = connection.getResponseCode();
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+                System.out.println("Error: Received HTTP response code " + responseCode);
+                return -1;
+            }
 
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String inputLine;
 
-            while ((inputLine = in.readLine()) != null){
+            while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
 
             JSONObject json = new JSONObject(response.toString());
             JSONObject data = json.getJSONObject("data");
-            double pricePerBitcoin = Double.parseDouble(data.getString("priceUsd"));
-            double totalValue = pricePerBitcoin * quantity;
-
-            System.out.printf("The current price of Bitcoin is: $%,.4f%n", pricePerBitcoin);
-            System.out.printf("> %.4f Bitcoin is worth: $%,.4f%n", quantity, totalValue);
-        }catch (Exception e) {
+            return Double.parseDouble(data.getString("priceUsd")); // Extract Bitcoin price in USD
+        } catch (Exception e) {
             System.out.println("Error retrieving or parsing data: " + e.getMessage());
-            System.exit(1);
+            return -1;
         }
+    }
+
+    // Method to calculate total value of Bitcoin
+    public static double calculateTotalValue(double pricePerBitcoin, double quantity) {
+        return pricePerBitcoin * quantity;
+    }
+
+    // Method to print results to the console
+    public static void printResults(double pricePerBitcoin, double quantity, double totalValue) {
+        System.out.printf("The current price of Bitcoin is: $%,.4f%n", pricePerBitcoin);
+        System.out.printf("> %.4f Bitcoin is worth: $%,.4f%n", quantity, totalValue);
     }
 }
