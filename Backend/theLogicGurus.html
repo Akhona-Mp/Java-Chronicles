@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Logic Guru's - Backend Development Starter Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .guide-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #f8f9fa;
+            color: #212529;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #000;
+        }
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 2px solid #6db33f;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ced4da;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+        p, li {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #495057;
+        }
+        a {
+            color: #0d6efd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #0a58ca;
+            text-decoration: underline;
+        }
+        .download-link {
+            display: inline-block;
+            background-color: #6db33f;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        .download-link:hover {
+            background-color: #5c9435;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            padding-left: 1.5em;
+            position: relative;
+        }
+        li::before {
+            content: '🍃';
+            position: absolute;
+            left: 0;
+            color: #6db33f;
+        }
+        .tool-item {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #6db33f;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+        .logo span {
+            color: #6db33f;
+        }
+        .folder-structure {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            color: #495057;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="guide-container">
+        <div class="logo">The Logic Guru's <span>🍃</span></div>
+        <h1>Backend Development Starter Guide</h1>
+        <p class="text-lg text-gray-600 mb-8">Welcome, team! This guide covers the essential tools and setup for our Java & Spring Boot track. A solid foundation is key to building robust applications.</p>
+
+        <h2>🔧 Core Development Tools</h2>
+
+        <div class="tool-item">
+            <h3>1. Java Development Kit (JDK)</h3>
+            <p>The foundation for all Java development. We'll use JDK 17 as it's a Long-Term Support (LTS) version and fully compatible with modern Spring Boot.</p>
+            <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html" target="_blank" class="download-link">Download OpenJDK 17</a>
+            <p class="mt-3 text-sm text-gray-500">💡 Ensure the `JAVA_HOME` environment variable is set correctly after installation.</p>
+        </div>
+
+        <div class="tool-item">
+            <h3>2. IDE (Integrated Development Environment)</h3>
+            <p>Choose one of these top-tier IDEs for Spring Boot development.</p>
+            <h4 class="font-semibold text-gray-800 mt-4">✅ IntelliJ IDEA (Recommended)</h4>
+            <p>Offers deep integration with Spring and a powerful set of tools. The Community version is free and sufficient for our needs.</p>
+            <a href="https://www.jetbrains.com/idea/download/" target="_blank" class="download-link mt-2">Download IntelliJ IDEA</a>
+            <h4 class="font-semibold text-gray-800 mt-4">✅ Visual Studio Code</h4>
+            <p>A great lightweight alternative with the right extensions.</p>
+            <a href="https://code.visualstudio.com/download" target="_blank" class="download-link mt-2">Download VS Code</a>
+            <p class="mt-2 text-sm text-gray-500"><strong>Essential Extension Pack:</strong> <a href="https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack">Spring Boot Extension Pack</a>.</p>
+        </div>
+
+        <div class="tool-item">
+            <h3>3. Git and GitHub</h3>
+            <p>Essential for version control, collaboration, and CI/CD pipelines.</p>
+            <strong>🛠 Install Git:</strong> <a href="https://git-scm.com/downloads" class="download-link">Git Download</a><br>
+            <strong class="mt-4 inline-block">🖥 GitHub Setup:</strong> Create an account at <a href="https://github.com">github.com</a> and share your username with the team lead.
+        </div>
+
+        <h2>🐳 DevOps & Database Tools</h2>
+
+        <div class="tool-item">
+            <h3>1. Docker</h3>
+            <p>We'll use Docker to run our databases, message brokers, and other services in containers. This ensures a consistent environment for everyone and simplifies deployment.</p>
+            <a href="https://www.docker.com/products/docker-desktop/" target="_blank" class="download-link">Download Docker Desktop</a>
+        </div>
+        
+        <div class="tool-item">
+            <h3>2. Database (via Docker)</h3>
+            <p>Our primary database will be PostgreSQL. We will run it as a Docker container.</p>
+            <p class="mt-2 text-sm text-gray-500">No separate install needed! We will pull the image and run it with Docker commands.</p>
+        </div>
+        
+        <div class="tool-item">
+            <h3>3. API Client</h3>
+            <p>You need a tool to test your REST APIs.</p>
+            <p><a href="https://www.postman.com/downloads/">Postman</a> and <a href="https://insomnia.rest/download">Insomnia</a> are both excellent free options.</p>
+        </div>
+        
+        <h2>🧠 AI Model</h2>
+        <div class="tool-item">
+            <h3>Gemini 2.0 Flash</h3>
+            <p>Our primary AI assistant for this track is <strong>Gemini 2.0 Flash</strong>. Leverage it for generating boilerplate code, debugging complex issues, understanding design patterns, and getting suggestions for API architecture.</p>
+        </div>
+
+        <h2>🔁 Next Steps</h2>
+        <ul>
+            <li>Install JDK 17 and your chosen IDE.</li>
+            <li>Install Git and Docker Desktop.</li>
+            <li>Join the team's GitHub organization.</li>
+            <li>Clone the starter project from `start.spring.io` or our team repo.</li>
+            <li>Run `docker pull postgres` to get the latest PostgreSQL image.</li>
+            <li>Launch and test a basic "Hello World" Spring Boot application.</li>
+        </ul>
+        
+        <h2>📦 Sample Project Structure</h2>
+        <p>A typical Spring Boot project follows this structure:</p>
+        <div class="folder-structure">
+my-awesome-api/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/example/myapi/
+│   │   │       ├── MyApiApplication.java
+│   │   │       ├── controller/
+│   │   │       ├── service/
+│   │   │       ├── repository/
+│   │   │       └── model/
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+├── .gitignore
+├── pom.xml
+└── README.md
+        </div>
+    </div>
+
+</body>
+</html>
