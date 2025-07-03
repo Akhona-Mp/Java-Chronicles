@@ -3,13 +3,12 @@ package za.co.wethinkcode;
 import java.util.*;
 
 public class addContact {
-    String name;
-    Integer phone;
     Map<String, Integer> contacts;
 
     addContact(Map<String,Integer>contacts){
         this.contacts = contacts;
     }
+
     public Map<String,Integer> add() {
         Scanner scanner = new Scanner(System.in);
 

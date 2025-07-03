@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Bitcoin/Bitcoin/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Backend/Activities/Contact Manager/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Backend/Activities/Contact-Manager/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Contact-Manager/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Backend/Activities/Contact-Manager/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Backend/Activities/Calculator/src/main/java" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

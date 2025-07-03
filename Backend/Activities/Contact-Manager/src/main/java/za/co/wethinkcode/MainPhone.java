@@ -22,24 +22,23 @@ public class MainPhone {
             int option = input.nextInt();
 
             if (option == 1) {
-                addContact use = new addContact(contacts);
-                contacts = use.add();
+                addContact user = new addContact(contacts);
+                contacts = user.add();
             }else if (option == 2) {
                 System.out.println(contacts);
             }else if (option == 3) {
-                removeContact use = new removeContact(contacts);
-                contacts = use.remove();
+                removeContact user = new removeContact(contacts);
+                contacts = user.remove();
             }else if (option == 4) {
-                searchContact use = new searchContact(contacts);
-                contacts = use.search();
+                searchContact user = new searchContact(contacts);
+                contacts = user.search();
             }else if (option == 5) {
 
             }else if (option == 6) {
-
+                System.out.println("Phone shutting down!");
+                System.exit(1);
             }else{
-            ;
+                System.out.println("Invalid option.");
         }
-
-
     }}
 }
