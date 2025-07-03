@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class MainPhone {
     public static void main(String[] args) {
         Map<String,Integer> contacts = new HashMap<>();
         System.out.print(

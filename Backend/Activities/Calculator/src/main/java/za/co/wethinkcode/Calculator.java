@@ -2,7 +2,7 @@ package za.co.wethinkcode;
 
 import java.util.Scanner;
 
-public class Main {
+public class Calculator {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
